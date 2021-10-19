@@ -1,15 +1,22 @@
 import React from "react";
 import { connect } from 'react-redux';
+import ProfileInfo from "./ProfileInfo";
+import ProfileForm from "./ProfileForm";
 
-class Profile extends React.Component {
+const Profile = () => {
 
-    render() {
-        return (
-            <div>
-                This is the profile page
+    return (
+            <div className='container'>
+                <div class='row'>
+                    <div class='col-6'>
+                        <ProfileInfo />
+                    </div>
+                    <div class='col-6'>
+                        <ProfileForm/>
+                    </div>
+                </div>
             </div>
         )
-    }
 }
 
 

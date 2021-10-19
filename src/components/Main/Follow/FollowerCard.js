@@ -5,11 +5,13 @@ import { removeFollower } from '../../../actions'
 //The component for the layout of singer follower
 const FollowerCard = ({ id, username, avatar, headline, removeFollower}) => {
     return(
-        <div>
-            <img src={avatar} alt={""} className="img-thumbnail img-responsive" height="150" width="150"/>
+        <div class='border p-3 mb-3 shadow-lg bg-light'>
+            <img src={avatar} alt={""} class='img-fluid'/>
             <div>{username}</div>
             <div>{headline}</div>
-            <input type='button' value='Unfollow' onClick={() => {removeFollower(id)}} />
+            <div class='text-center'>
+                <input class="btn btn-danger btn-sm text-center" type='button' value='Unfollow' onClick={() => {removeFollower(id)}} />
+            </div>
         </div>
     )
 }

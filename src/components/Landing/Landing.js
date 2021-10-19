@@ -6,25 +6,36 @@ import {requestUsers, requestArticles} from '../../actions'
 
 class Landing extends React.Component {
 
-    componentDidMount() {
-        if (this.props.userInfo.length === 0) {
-            fetch("https://jsonplaceholder.typicode.com/users").then(res => res.json()).then(users => {
-                this.props.requestUsers(users);
-            });
+    fetchInfo = async (users_url, articles_url) => {
+        const users_response = await fetch(users_url);
+        const users = await users_response.json();
+        this.props.requestUsers(users);
 
-            fetch("https://jsonplaceholder.typicode.com/posts").then(res => res.json()).then(articles => {
-                this.props.requestArticles(articles);
-            });
+        const articles_response = await fetch(articles_url);
+        const articles = await articles_response.json();
+        this.props.requestArticles(articles);
+    }
+
+
+    componentDidMount() {
+        if (this.props.userInfo.length === 0 && this.props.articles.length === 0) {
+            this.fetchInfo("https://jsonplaceholder.typicode.com/users", "https://jsonplaceholder.typicode.com/posts");
         }
     }
 
     render() {
         return (
-            <div>
-                <Register />
-                <Login />
-                <Article />
+            <div className='container'>
+                <div class='row'>
+                    <div class='col-6'>
+                        <Register />
+                    </div>
+                    <div class='col-6'>
+                        <Login />
+                    </div>
+                </div>
             </div>
+            
         );
     }
     
@@ -32,7 +43,8 @@ class Landing extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        userInfo: state.userInfo
+        userInfo: state.userInfo,
+        articles: state.articles
     }
 };
 

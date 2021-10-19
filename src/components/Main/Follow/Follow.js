@@ -4,7 +4,7 @@ import { addFollower } from '../../../actions'
 import FollowerCard from './FollowerCard'
 
 // The component for the layout of the whole followers area
-const Follow =({followers, addFollower}) =>{
+const Follow =({followers, addFollower}) => {
         const handleAddFollower = () => {
             const newFollower = document.getElementById("addFollower");
             if (newFollower.value !== '') {
@@ -15,6 +15,10 @@ const Follow =({followers, addFollower}) =>{
 
         return (
 		    <div>
+                <div class="border p-3 mb-3 shadow-lg bg-light">
+                    <input class="form-control flex-fill input-lg" type="text" id="addFollower" placeholder="Add Follower"/>
+                    <input class="btn btn-outline-primary btn-block" type="button" value="Add" onClick={handleAddFollower}/>
+                </div>
                 <div>
                     {followers.map((follower, key) => {
                         return (
@@ -23,10 +27,6 @@ const Follow =({followers, addFollower}) =>{
                             )
                         }
                     )}
-                </div>
-                <div>
-                    <input type="text" id="addFollower" placeholder="Add Follower"/>
-                    <input type="button" value="Add" onClick={handleAddFollower}/>
                 </div>
             </div>
         )

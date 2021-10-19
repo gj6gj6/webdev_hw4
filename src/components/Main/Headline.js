@@ -13,19 +13,22 @@ const Headline = ({currUser, logout, updateHeadline}) => {
     }
 
     return (
-        <div>
-            <button onClick={() => {logout(); history.push({pathname: "/"})}}>Logout</button>
-			<button onClick={() => history.push({pathname: "/profile"})}>Profile Page</button><br/>
-            <img src={currUser.avatar} alt={''} height="150" width="150"/>
+        <div class='border p-3 mb-5 shadow-lg bg-light'>
+            <div class="d-flex justify-content-between">
+                <button class="btn btn-secondary" onClick={() => {logout(); history.push({pathname: "/"})}}>Logout</button>
+                <button class="btn btn-info" onClick={() => history.push({pathname: "/profile"})}>Profile Page</button>
+            </div>  
+            <br/>
+            <br/>
+
+            <img src={currUser.avatar} alt={''} class='img-fluid'/>
+            
             <p>{currUser.username}</p>
             <p>{currUser.headline}</p>
-            <form>
-                <div>
-                    <b>Update Status:</b>
-                    <input type="text" id="headline" placeholder="new status" />
-                    <button type="button" onClick={handleUpdateHeadline}>Update</button>
-                </div>
-            </form>
+            <div>
+                <input class="form-control flex-fill input-lg" type="text" id="headline" placeholder="new status" />    
+                <button class="btn btn-outline-primary btn-block" type="button" onClick={handleUpdateHeadline}>Update</button>
+            </div>
         </div>
     )
 }

@@ -12,14 +12,18 @@ const Login = ({login}) => {
 
 
     return (
-        <div>
-            <h2>Log in</h2>
+        <div class='border p-3 shadow-lg bg-light'>
+            <div class='text-center'>
+                <h2>Login</h2>
+            </div>
             <form id="loginForm" onSubmit = {handleSubmit}>
                 <label>Account Name</label><br/>
-                <input type="text" id="login_accountName" name="login_accountName" required /><br/><br/>
+                <input type="text" id="login_accountName" class="form-control" name="login_accountName" required /><br/>
                 <label>Password</label><br/>
-                <input type="password" id="login_password" name="login_password" required/><br/><br/>
-                <input type="submit" value="Log In" id="login_submit" />
+                <input type="password" id="login_password" class="form-control" name="login_password" required/><br/>
+                <div class="text-center">
+                    <input type="submit" class="btn btn-primary" value="Log In" id="login_submit" />
+                </div>
             </form> 
         </div>
     )
